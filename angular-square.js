@@ -9,18 +9,25 @@
   "use strict";
   angular
   .module("angular.square",[])
-  .directive("angularSquare", [function() {
+  .directive("angularSquare", ['$window', function($window) {
     return {
         restrict: "A",
         link: function(scope, element, attrs) {
+          var square = "@";
 
-            var square = element.innerWidth()
-            console.log(square)
+          function squares(){
+            square = element.innerWidth()
               //.removeAttr('angular-square')
               element.css({
-                height: square,
-                width: square
+                height: square
               })
+            };
+
+            angular.element($window).bind('resize', function () {
+              square = element.innerWidth()
+              squares();
+            });
+            squares();
             }
           }
         }
