@@ -19,7 +19,8 @@
             square = element.innerWidth()
               //.removeAttr('angular-square')
               element.css({
-                height: square
+                height: square,
+                width:"100%"
               })
             };
 
